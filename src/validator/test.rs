@@ -18,6 +18,7 @@ use validator::{Validate, ValidateArgs, ValidationError};
 
 #[derive(Clone, Deserialize, Serialize, Validate, Eq, PartialEq)]
 #[cfg_attr(feature = "extra_protobuf", derive(prost::Message))]
+#[cfg_attr(not(feature = "extra_protobuf"), derive(Debug))]
 #[cfg_attr(
     feature = "typed_multipart",
     derive(axum_typed_multipart::TryFromMultipart)
