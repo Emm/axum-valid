@@ -743,8 +743,8 @@ pub async fn check_json(type_name: &'static str, response: reqwest::Response) {
 }
 
 mod route {
-    pub const PATH: &str = "/path/:v0/:v1";
-    pub const PATH_EX: &str = "/path_ex/:v0/:v1";
+    pub const PATH: &str = "/path/{v0}/{v1}";
+    pub const PATH_EX: &str = "/path_ex/{v0}/{v1}";
     pub const QUERY: &str = "/query";
     pub const QUERY_EX: &str = "/query_ex";
     pub const FORM: &str = "/form";
@@ -1036,7 +1036,6 @@ mod extra {
     }
 
     //  1.3. Implement your extractor (`FromRequestParts` or `FromRequest`)
-    #[axum::async_trait]
     impl<S> FromRequestParts<S> for Parameters
     where
         S: Send + Sync,
@@ -1052,7 +1051,6 @@ mod extra {
         }
     }
 
-    #[axum::async_trait]
     impl<S> FromRequestParts<S> for ParametersEx
     where
         S: Send + Sync,
@@ -1198,12 +1196,12 @@ mod extra_typed_path {
     use validator::{Validate, ValidationError};
 
     pub mod route {
-        pub const EXTRA_TYPED_PATH: &str = "/extra_typed_path/:v0/:v1";
-        pub const EXTRA_TYPED_PATH_EX: &str = "/extra_typed_path_ex/:v0/:v1";
+        pub const EXTRA_TYPED_PATH: &str = "/extra_typed_path/{v0}/{v1}";
+        pub const EXTRA_TYPED_PATH_EX: &str = "/extra_typed_path_ex/{v0}/{v1}";
     }
 
     #[derive(Validate, TypedPath, Deserialize)]
-    #[typed_path("/extra_typed_path/:v0/:v1")]
+    #[typed_path("/extra_typed_path/{v0}/{v1}")]
     pub struct TypedPathParam {
         #[validate(range(min = 5, max = 10))]
         v0: i32,
@@ -1244,7 +1242,7 @@ mod extra_typed_path {
     }
 
     #[derive(Validate, TypedPath, Deserialize)]
-    #[typed_path("/extra_typed_path_ex/:v0/:v1")]
+    #[typed_path("/extra_typed_path_ex/{v0}/{v1}")]
     #[validate(context = TypedPathParamExValidationArguments)]
     pub struct TypedPathParamEx {
         #[validate(custom(function = "validate_v0", use_context))]

@@ -61,7 +61,6 @@
 //!         }
 //!     }
 //!
-//!     #[axum::async_trait]
 //!     impl<S> FromRequestParts<S> for Parameter
 //!     where
 //!         S: Send + Sync,
@@ -108,7 +107,6 @@
 //!         }
 //!     }
 //!
-//!     #[axum::async_trait]
 //!     impl<S> FromRequestParts<S> for Parameter
 //!     where
 //!         S: Send + Sync,
@@ -189,7 +187,6 @@
 //!         }
 //!     }
 //!
-//!     #[axum::async_trait]
 //!     impl<S> FromRequestParts<S> for Parameter
 //!     where
 //!         S: Send + Sync,
@@ -242,7 +239,6 @@
 //!         }
 //!     }
 //!
-//!     #[axum::async_trait]
 //!     impl<S> FromRequestParts<S> for Parameter
 //!     where
 //!         S: Send + Sync,
@@ -332,7 +328,6 @@
 //!         }
 //!     }
 //!
-//!     #[axum::async_trait]
 //!     impl<S> FromRequestParts<S> for Parameter
 //!     where
 //!         S: Send + Sync,
@@ -407,7 +402,6 @@
 //!         }
 //!     }
 //!
-//!     #[axum::async_trait]
 //!     impl<S> FromRequestParts<S> for Parameter
 //!     where
 //!         S: Send + Sync,
